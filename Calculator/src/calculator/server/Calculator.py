@@ -23,9 +23,9 @@ class Calculator(object):
         
     def plus(self, num1, num2 = None):
         if num2 is None:
-            self.memory = num1 + num2
-        else:
             self.memory += num1
+        else:
+            self.memory = num1 + num2
         return self.memory
     
     def sum(self, *nums):
