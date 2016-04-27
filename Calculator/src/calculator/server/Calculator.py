@@ -8,7 +8,6 @@ class Calculator(object):
     '''
     Simple Arithmetic Calculator
     '''
-    memory = 0
     
     def __init__(self):
         '''

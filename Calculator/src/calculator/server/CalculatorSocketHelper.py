@@ -11,7 +11,7 @@ class CalculatorSocketHelper(object):
     '''
     Socket Helper for Calculator of server
     '''
-    __defaultType = socket.SOCK_STREAM
+    __defaultType = socket.SOCK_DGRAM
     __defaultPort = 12000
     __defaultBufferSize = 1024
     __defalutListenings = 1
@@ -32,20 +32,6 @@ class CalculatorSocketHelper(object):
         if self.socketType == socket.SOCK_STREAM:
             self.serverSocket.listen(self.__defalutListenings)
         print ("The server is ready to receive")
-    
-    def __proceed(self, message, address):
-        decodedMsg = message.decode()
-        form = decodedMsg.split('=')
-        print ("Received from", address, ":\t", decodedMsg)
-        cal = Calculator()
-        try:
-            result = form[0] + "= "
-            result += str(cal.calculate(form[0]))
-        except Exception as e:
-            result = "Syntax Error"
-            print ("Error:", e)
-        print ("Send to", address, ":\t", result)
-        return result.encode()
     
     def runSocket(self):
         print("The server is running ...")
@@ -68,6 +54,20 @@ class CalculatorSocketHelper(object):
                 connectionSocket.send(self.__proceed(message, clientAddress))
                 # 연결 소켓을 닫음
                 connectionSocket.close()
+    
+    def __proceed(self, message, address):
+        decodedMsg = message.decode()
+        form = decodedMsg.split('=')
+        print ("Received from", self.socketType, address, ":\t", decodedMsg)
+        cal = Calculator()
+        try:
+            result = form[0] + "= "
+            result += str(cal.calculate(form[0]))
+        except Exception as e:
+            result = "Syntax Error"
+            print ("Error:", e)
+        print ("Send to", self.socketType, address, ":\t", result)
+        return result.encode()
     
     def closeSocket(self):
         # 서버 소켓을 닫음
