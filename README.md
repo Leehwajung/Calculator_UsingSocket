@@ -10,4 +10,4 @@ Client Project: CalculatorAgent
 
 ###Environment
 Language: Python 3.5<br>
-IDE: Eclipse Mars S.2 (PyDev 4.5.5)
+IDE: Eclipse Mars.2 (PyDev 4.5.5)
