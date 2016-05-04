@@ -1,6 +1,4 @@
-# Calculator<br><sub>___— Simple Arithmetic Calculator Using Socket Implemented on Python___</sub>
-
-Computer Networks Course - Assignment #1
+# Computer Networks Course - Assignment #1<br><sub>___— Sentence Capitalizer___</sub>
 
 ##"reference" Branch<br><sub>___— Problem 1___</sub>
 
